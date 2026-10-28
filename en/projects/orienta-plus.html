@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Orienta+ · Case study · Caroline Ferreira</title>
+  <meta name="description" content="Orienta+: a Flutter app that guides trans people through Brazil’s public health system. Top 4 at BioChallenge 2026 and CBEB 2026 finalist.">
+  <link rel="canonical" href="https://carolferreira-dev.github.io/portifolio/en/projects/orienta-plus.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://carolferreira-dev.github.io/portifolio/projetos/orienta-plus.html">
+  <link rel="alternate" hreflang="en" href="https://carolferreira-dev.github.io/portifolio/en/projects/orienta-plus.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Orienta+ · Case study">
+  <meta property="og:description" content="An app that guides trans people through Brazil’s public health system, with a services map, a guided journey and offline content.">
+  <meta property="og:url" content="https://carolferreira-dev.github.io/portifolio/en/projects/orienta-plus.html">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <script>try { var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <script src="../../assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../">Caroline Ferreira</a>
+      <nav class="nav" aria-label="Main">
+        <a href="../#projects">Projects</a>
+        <a href="../#contact">Contact</a>
+        <button class="theme-toggle" type="button" data-label-dark="Dark mode" data-label-light="Light mode">Dark mode</button>
+        <a class="quiet" href="../../projetos/orienta-plus.html" hreflang="pt-BR" lang="pt-BR">Português</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content">
+    <section class="case-hero wrap">
+      <a class="back" href="../#projects">← Back to projects</a>
+      <h1>Orienta+</h1>
+      <p class="summary">A guide for trans people in Brazil’s public health system (SUS): from the first visit at a primary care unit to a referral to specialized care.</p>
+      <dl class="facts">
+        <div><dt>My role</dt><dd>App foundation, architecture and security</dd></div>
+        <div><dt>When</dt><dd>Apr to Oct 2026</dd></div>
+        <div><dt>Team</dt><dd>3 people · 166 of 208 commits are mine</dd></div>
+        <div><dt>Result</dt><dd>Top 4 of 17 at BioChallenge and a final at CBEB</dd></div>
+      </dl>
+    </section>
+
+    <section class="gallery band-op" aria-label="App screens">
+      <div class="grid">
+        <figure><img src="../../assets/img/orienta/05-mapa-servicos.png" width="450" height="825" loading="lazy" alt="Map of services with filters for trans-friendly, specialized and hormone therapy services"><figcaption>Map with filters</figcaption></figure>
+        <figure><img src="../../assets/img/orienta/06-jornada.png" width="450" height="825" loading="lazy" alt="Six-step guided journey"><figcaption>Six-step journey</figcaption></figure>
+        <figure><img src="../../assets/img/orienta/07-etapa-checklist.png" width="450" height="825" loading="lazy" alt="Checklist for the “Get your SUS card” step"><figcaption>A checklist for each step</figcaption></figure>
+        <figure><img src="../../assets/img/orienta/08-base-conhecimento.png" width="450" height="825" loading="lazy" alt="Knowledge base articles"><figcaption>Articles available offline</figcaption></figure>
+        <figure><img src="../../assets/img/orienta/10-hormonizacao-calendario.png" width="450" height="825" loading="lazy" alt="Hormone therapy calendar with doses taken, skipped and planned"><figcaption>Hormone therapy reminders</figcaption></figure>
+      </div>
+      <p class="ui-note">The app’s interface is in Portuguese.</p>
+    </section>
+
+    <section class="case-section wrap">
+      <div class="cols rule-strong">
+        <h2 class="label">Why it exists</h2>
+        <div class="content">
+          <p>Navigating the SUS is already hard. For trans people, there is still little clear information about which services are welcoming, respect their chosen name and offer specialized care.</p>
+          <p>Orienta+ brings it all together: a step-by-step journey from the primary care unit to the specialized clinic, a map of services with filters, community reviews, articles that work offline and a hormone therapy calendar with reminders.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section wrap">
+      <div class="cols rule-strong">
+        <h2 class="label">What I built</h2>
+        <ul class="content">
+          <li>The Flutter app architecture, with Riverpod for state, go_router for navigation and Hive to store data on the device.</li>
+          <li>Security on Supabase with Row Level Security: the database only returns each person’s own data, and reviews show only the chosen name.</li>
+          <li>The account deletion flow and the protection of sensitive data.</li>
+          <li>An accessibility audit: 130% font size, high contrast, larger touch targets, screen reader labels and dark mode in the app and on the map.</li>
+          <li>Preparing the FastAPI backend for Render and address search with OpenStreetMap and Photon.</li>
+          <li>The Android release build: permissions, signing and build rules.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="case-section wrap">
+      <div class="cols rule-strong">
+        <h2 class="label">What was hard</h2>
+        <div class="content">
+          <div class="challenge"><h3>Combining different data sources</h3><p>Health facilities come from OpenStreetMap, and the services accredited for transgender care come from CNES/DataSUS, Brazil’s national health facility registry. The app combines both with community reviews.</p></div>
+          <div class="challenge"><h3>Protecting contributors</h3><p>A suggested place is pinned on the map by the address typed in, never by the location of the person suggesting it, and stays “unverified” until the team reviews it.</p></div>
+          <div class="challenge"><h3>Reminders that vanished in the final APK</h3><p>Reminders worked in development but not in the release APK. Android’s code shrinking removed classes used by the notifications, so the build rules had to be adjusted.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section wrap">
+      <div class="cols rule-strong">
+        <h2 class="label">Team</h2>
+        <p class="content team">Emily Horrana (backend, API integrations and the hormone therapy module), Bruna (interface design, flows and visual identity) and me. Advised by Christopher Lima.</p>
+      </div>
+    </section>
+
+    <nav class="case-next" aria-label="Other projects">
+      <div class="wrap"><div class="rule">
+        <a class="back" href="safevoice.html">← SafeVoice</a>
+        <a class="next" href="../#projects">All projects →</a>
+      </div></div>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Caroline Ferreira de Souza</span>
+      <nav aria-label="Profiles">
+        <a href="https://github.com/carolferreira-dev" rel="me">GitHub</a>
+        <a href="https://www.linkedin.com/in/carolineferreiradesouza" rel="me">LinkedIn</a>
+        <a href="mailto:carolferreira.dev@gmail.com">Email</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

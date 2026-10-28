@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SafeVoice · Case study · Caroline Ferreira</title>
+  <meta name="description" content="SafeVoice: an emergency app disguised as a period tracker that sends location and audio via WhatsApp. 2nd place in Market Viability at FETIN 2026.">
+  <link rel="canonical" href="https://carolferreira-dev.github.io/portifolio/en/projects/safevoice.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://carolferreira-dev.github.io/portifolio/projetos/safevoice.html">
+  <link rel="alternate" hreflang="en" href="https://carolferreira-dev.github.io/portifolio/en/projects/safevoice.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="SafeVoice · Case study">
+  <meta property="og:description" content="A discreet emergency app with a FastAPI backend, a delivery queue and WhatsApp.">
+  <meta property="og:url" content="https://carolferreira-dev.github.io/portifolio/en/projects/safevoice.html">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <script>try { var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <script src="../../assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../">Caroline Ferreira</a>
+      <nav class="nav" aria-label="Main">
+        <a href="../#projects">Projects</a>
+        <a href="../#contact">Contact</a>
+        <button class="theme-toggle" type="button" data-label-dark="Dark mode" data-label-light="Light mode">Dark mode</button>
+        <a class="quiet" href="../../projetos/safevoice.html" hreflang="pt-BR" lang="pt-BR">Português</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content">
+    <section class="case-hero wrap">
+      <a class="back" href="../#projects">← Back to projects</a>
+      <h1>SafeVoice</h1>
+      <p class="summary">On the outside, a period tracker. On the inside, a silent panic button that alerts the support network via WhatsApp, with location and audio.</p>
+      <dl class="facts">
+        <div><dt>My role</dt><dd>Full-stack developer</dd></div>
+        <div><dt>When</dt><dd>Mar to Sep 2026</dd></div>
+        <div><dt>Team</dt><dd>4 people · 58 of 87 commits are mine</dd></div>
+        <div><dt>Result</dt><dd>2nd place in Market Viability, FETIN</dd></div>
+      </dl>
+    </section>
+
+    <section class="gallery band-sv" aria-label="App screens">
+      <div class="grid">
+        <figure><img src="../../assets/img/safevoice/01-inicio-disfarce.png" width="448" height="870" loading="lazy" alt="Home screen that looks like a period tracker"><figcaption>The disguise</figcaption></figure>
+        <figure><img src="../../assets/img/safevoice/02-calendario.png" width="447" height="869" loading="lazy" alt="Cycle calendar"><figcaption>The calendar works</figcaption></figure>
+        <figure><img src="../../assets/img/safevoice/04-papo-privado.png" width="447" height="869" loading="lazy" alt="Anonymous community"><figcaption>Anonymous community</figcaption></figure>
+        <figure><img src="../../assets/img/safevoice/05-sos-confirmacao.png" width="436" height="854" loading="lazy" alt="Help request confirmation"><figcaption>4 taps on the bell</figcaption></figure>
+        <figure><img src="../../assets/img/safevoice/07-sos-ajuda-solicitada.png" width="436" height="849" loading="lazy" alt="Help requested message"><figcaption>The support network got it</figcaption></figure>
+      </div>
+      <p class="ui-note">The app’s interface is in Portuguese.</p>
+    </section>
+
+    <section class="case-section wrap">
+      <div class="cols rule-strong">
+        <h2 class="label">Why it exists</h2>
+        <div class="content">
+          <p>In domestic violence situations, opening a messaging app and typing a request for help may not be safe. Common SOS buttons make noise or require actions the abuser can see.</p>
+          <p>In SafeVoice, help is requested with 4 taps on the bell on the home screen, with a confirmation, or with 3 presses on the volume or power buttons, even with the screen locked. The app records 10 seconds of audio, gets the location and alerts the trusted contacts via WhatsApp.</p>
+        </div>
+      </div>
+      <figure class="diagram">
+        <img src="../../assets/img/diagramas/safevoice-sos-flow-light.svg" width="980" height="760" loading="lazy" alt="SOS sequence diagram: the app records audio and gets GPS, creates the alert on the backend, which stores it in Supabase and sends it via WhatsApp with retries; the audio is released when the contact replies.">
+        <figcaption>How the request for help travels: from the tap on the bell to the audio reaching the contact.</figcaption>
+      </figure>
+    </section>
+
+    <section class="case-section wrap">
+      <div class="cols rule-strong">
+        <h2 class="label">What I built</h2>
+        <ul class="content">
+          <li>The FastAPI API, deployed on Render: it creates the alert, checks the Supabase login and limits requests to 10 every 5 minutes.</li>
+          <li>A delivery queue stored in the database that tries up to 5 times per contact and survives server restarts.</li>
+          <li>The integration with the official WhatsApp API, including the webhook that confirms when a message arrives. I also tested Twilio and a WhatsApp Web bot as alternatives.</li>
+          <li>The Supabase database with Row Level Security, and private storage for the audio.</li>
+          <li>The physical button triggers in Flutter, with recording and GPS at the same time.</li>
+          <li>Tests with pytest and flutter test running on GitHub Actions, and logs with no personal data.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="case-section wrap">
+      <div class="cols rule-strong">
+        <h2 class="label">What was hard</h2>
+        <div class="content">
+          <div class="challenge"><h3>Android blocks recording when the app is closed</h3><p>Since Android 10, the SOS from the buttons could not use the microphone or GPS in the background. The fix was to open the app on top of the lock screen through the accessibility service.</p></div>
+          <div class="challenge"><h3>The same request arriving twice</h3><p>The bell and the buttons run in separate processes, and the network can drop midway. Each request carries a unique identifier, so a resend returns the same alert instead of creating another one.</p></div>
+          <div class="challenge"><h3>WhatsApp’s 24-hour rule</h3><p>The audio can only be sent after the contact interacts with the conversation. The delivery waits, without using up attempts, until they tap “I got the alert”.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section wrap">
+      <div class="cols rule-strong">
+        <h2 class="label">Team</h2>
+        <p class="content team">Stefanie Saponara (design and UX/UI), Mikael da Silva Ribeiro (Flutter frontend), Eliseu Almeida Marinho de Oliveira (prototypes and architecture) and me. Advised by Prof. Jonas Lopes de Vilas Boas.</p>
+      </div>
+    </section>
+
+    <nav class="case-next" aria-label="Other projects">
+      <div class="wrap"><div class="rule">
+        <a class="back" href="../#projects">← All projects</a>
+        <a class="next" href="orienta-plus.html">Next: Orienta+ →</a>
+      </div></div>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Caroline Ferreira de Souza</span>
+      <nav aria-label="Profiles">
+        <a href="https://github.com/carolferreira-dev" rel="me">GitHub</a>
+        <a href="https://www.linkedin.com/in/carolineferreiradesouza" rel="me">LinkedIn</a>
+        <a href="mailto:carolferreira.dev@gmail.com">Email</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Caroline Ferreira de Souza · Desenvolvedora de Software</title>
+  <meta name="description" content="Portfólio de Caroline Ferreira de Souza, estudante de Engenharia de Software no Inatel. Apps em Flutter e Dart premiados na FETIN e no BioChallenge 2026.">
+  <link rel="canonical" href="https://carolferreira-dev.github.io/portifolio/">
+  <link rel="alternate" hreflang="pt-BR" href="https://carolferreira-dev.github.io/portifolio/">
+  <link rel="alternate" hreflang="en" href="https://carolferreira-dev.github.io/portifolio/en/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Caroline Ferreira de Souza · Desenvolvedora de Software">
+  <meta property="og:description" content="Apps em Flutter e Dart para problemas reais de saúde e segurança.">
+  <meta property="og:url" content="https://carolferreira-dev.github.io/portifolio/">
+  <meta property="og:image" content="https://carolferreira-dev.github.io/portifolio/assets/img/caroline.jpg">
+  <meta property="og:locale" content="pt_BR">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script>try { var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="#inicio">Caroline Ferreira</a>
+      <nav class="nav" aria-label="Principal">
+        <a href="#projetos">Projetos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
+        <button class="theme-toggle" type="button" data-label-dark="Modo escuro" data-label-light="Modo claro">Modo escuro</button>
+        <a class="quiet" href="en/" hreflang="en" lang="en">English</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero wrap" id="inicio">
+      <div class="hero-grid">
+        <img class="hero-photo" src="assets/img/caroline.jpg" width="900" height="996" alt="Foto de Caroline sorrindo, de óculos e cabelo longo">
+        <div class="hero-text">
+          <p class="kicker">Estudante de Engenharia de Software no Inatel · Santa Rita do Sapucaí, MG</p>
+          <h1>Oi, eu sou a Caroline.</h1>
+          <p class="intro">Faço apps em Flutter e Dart. Neste ano construí dois deles com a minha equipe: um para pedir socorro em silêncio e outro para ajudar pessoas trans a encontrar atendimento no SUS. Os dois foram premiados.</p>
+          <div class="hero-links">
+            <a class="action" href="assets/docs/curriculo-caroline-ferreira.pdf" download>Baixar currículo (PDF)</a>
+            <a href="https://github.com/carolferreira-dev" rel="me">GitHub</a>
+            <a href="https://www.linkedin.com/in/carolineferreiradesouza" rel="me">LinkedIn</a>
+            <a href="mailto:carolferreira.dev@gmail.com">E-mail</a>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="label awards-title">Reconhecimento</h2>
+      <ul class="awards rule-strong">
+        <li><strong>2º lugar na FETIN</strong><span>Viabilidade de Mercado, 2026, com o SafeVoice</span></li>
+        <li><strong>Top 4 no BioChallenge</strong><span>Entre 17 equipes, com final no CBEB 2026, com o Orienta+</span></li>
+        <li><strong>Artigo no Incitel</strong><span>2026, sobre o robô seguidor de linha da Robotbulls</span></li>
+      </ul>
+    </section>
+
+    <section class="section wrap" id="projetos" aria-labelledby="projetos-titulo">
+      <h2 class="label" id="projetos-titulo">Projetos</h2>
+
+      <article class="project rule-strong" aria-labelledby="sv">
+        <div class="project-text">
+          <p class="label">FETIN 2026 · 2º lugar</p>
+          <h3 id="sv">SafeVoice</h3>
+          <p class="lede">Um app de emergência para vítimas de violência doméstica que, por fora, é só um calendário menstrual.</p>
+          <p class="details">Com 4 toques no sino, ou 3 nos botões de volume, ele manda localização e áudio para a rede de apoio pelo WhatsApp. Fui a desenvolvedora full-stack: a API em FastAPI com fila de entregas, o banco no Supabase, os gatilhos no Flutter e os testes.</p>
+          <p class="stack">Flutter · FastAPI · Supabase · WhatsApp Cloud API · GitHub Actions</p>
+          <p class="more"><a class="action" href="projetos/safevoice.html">Ler o estudo de caso →</a></p>
+        </div>
+        <div class="shots band-sv">
+          <img src="assets/img/safevoice/01-inicio-disfarce.png" width="448" height="870" loading="lazy" alt="Tela inicial com aparência de calendário menstrual">
+          <img src="assets/img/safevoice/05-sos-confirmacao.png" width="436" height="854" loading="lazy" alt="Confirmação “Solicitar ajuda?” depois de 4 toques no sino">
+          <img src="assets/img/safevoice/07-sos-ajuda-solicitada.png" width="436" height="849" loading="lazy" alt="Aviso “Ajuda solicitada!”">
+        </div>
+      </article>
+
+      <article class="project reverse rule" aria-labelledby="op">
+        <div class="shots band-op">
+          <img src="assets/img/orienta/05-mapa-servicos.png" width="450" height="825" loading="lazy" alt="Mapa de serviços com os filtros Atende trans, Especializado e Hormonioterapia">
+          <img src="assets/img/orienta/06-jornada.png" width="450" height="825" loading="lazy" alt="Jornada guiada em seis etapas">
+          <img src="assets/img/orienta/10-hormonizacao-calendario.png" width="450" height="825" loading="lazy" alt="Calendário de hormonização">
+        </div>
+        <div class="project-text">
+          <p class="label">BioChallenge 2026 · Top 4 de 17</p>
+          <h3 id="op">Orienta+</h3>
+          <p class="lede">Um guia para pessoas trans no SUS: do primeiro atendimento na UBS até o serviço especializado.</p>
+          <p class="details">Jornada guiada, mapa de serviços com filtros e artigos que funcionam sem internet. Fiz a base do app em Flutter, a arquitetura, a segurança com Row Level Security e a auditoria de acessibilidade.</p>
+          <p class="stack">Flutter · Riverpod · Hive · FastAPI · Supabase · OpenStreetMap</p>
+          <p class="more"><a class="action" href="projetos/orienta-plus.html">Ler o estudo de caso →</a></p>
+        </div>
+      </article>
+
+      <h3 class="label also-title">Também fiz</h3>
+      <div class="also rule">
+        <article>
+          <h4>(Orbi)tando</h4>
+          <p>Jogo feito em 36 horas numa maratona do Inatel. Fiz a lógica dos puzzles matemáticos.</p>
+          <p class="links"><a href="https://njj21.itch.io/orbitando">Jogar</a><a href="https://github.com/carolferreira-dev/the-sixth-slice">Código</a></p>
+        </article>
+        <article>
+          <h4>Robô seguidor de linha</h4>
+          <p>Firmware em C++ e controle PD na Robotbulls. O artigo mostra uma volta cerca de 26% mais rápida.</p>
+        </article>
+        <article>
+          <h4>Programação competitiva</h4>
+          <p>Treinos da CodeTroopers em C++: grafos, árvores, ordenação e busca.</p>
+          <p class="links"><a href="https://github.com/carolferreira-dev/treinamento-codetroopers">Código</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section wrap" id="sobre" aria-labelledby="sobre-titulo">
+      <h2 class="label" id="sobre-titulo">Sobre mim</h2>
+      <div class="about rule-strong">
+        <div class="about-intro">
+          <p class="statement">Comecei a trabalhar cedo, com atendimento e redes. Hoje divido o tempo entre projetos de software e pesquisa.</p>
+          <h3 class="label">Ferramentas</h3>
+          <p><strong>Uso nos meus projetos:</strong> Python, FastAPI, Flutter e Dart, Supabase e PostgreSQL, Git e GitHub Actions, C++.</p>
+          <p><strong>Já usei:</strong> HTML, CSS e JavaScript, GameMaker, Go, Ruby, Rust.</p>
+          <p><strong>Estou aprendendo:</strong> React e Node.js.</p>
+        </div>
+        <ol class="timeline">
+          <li><time>ago 2026 – hoje</time><div><h4>Iniciação Científica · eHealth Innovation Center</h4><p>Kit portátil para avaliar a qualidade do café, em fase de protótipo.</p></div></li>
+          <li><time>ago 2026 – hoje</time><div><h4>CodeTroopers</h4><p>Programação competitiva em C++.</p></div></li>
+          <li><time>mai 2026</time><div><h4>Organização da Semana da Computação</h4><p>Equipe do evento do Inatel, que incluiu a maratona CPG de 36 horas.</p></div></li>
+          <li><time>mar – jun 2026</time><div><h4>Instrutora voluntária de Python · Cas@Viva</h4><p>Aulas para iniciantes no projeto de inclusão social do Inatel.</p></div></li>
+          <li><time>2025 – 2026</time><div><h4>Iniciação Científica · Robotbulls</h4><p>Firmware em C++ e controle PID/PD. Antes, voluntária na equipe.</p></div></li>
+          <li><time>2025 e 2026</time><div><h4>Voluntária em lixo eletrônico · Cas@Viva</h4><p>Descarte correto e reaproveitamento de equipamentos.</p></div></li>
+          <li><time>2023 – 2028</time><div><h4>Engenharia de Software · Inatel</h4><p>Certificados de JavaScript (freeCodeCamp), Scrum e OKR (Inatel).</p></div></li>
+          <li><time>2022 – 2023</time><div><h4>Operadora e fiscal de caixa</h4><p>Comercial do Bosque, em Camanducaia.</p></div></li>
+          <li><time>2021</time><div><h4>Jovem Aprendiz em redes · Dello e Senai</h4><p>Cabeamento, configuração de rede e diagnóstico de falhas, em Extrema.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="contact wrap" id="contato" aria-labelledby="contato-titulo">
+      <h2 id="contato-titulo">Vamos conversar?</h2>
+      <p>Se você tem uma vaga ou quer saber mais sobre algum projeto, me escreva.</p>
+      <a class="email" href="mailto:carolferreira.dev@gmail.com">carolferreira.dev@gmail.com</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Caroline Ferreira de Souza</span>
+      <nav aria-label="Redes">
+        <a href="https://github.com/carolferreira-dev" rel="me">GitHub</a>
+        <a href="https://www.linkedin.com/in/carolineferreiradesouza" rel="me">LinkedIn</a>
+        <a href="assets/docs/curriculo-caroline-ferreira.pdf" download>Currículo</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

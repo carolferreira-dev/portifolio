@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Orienta+ · Estudo de caso · Caroline Ferreira</title>
+  <meta name="description" content="Orienta+: app em Flutter que guia pessoas trans no acesso ao SUS. Top 4 no BioChallenge 2026 e finalista no CBEB 2026.">
+  <link rel="canonical" href="https://carolferreira-dev.github.io/portifolio/projetos/orienta-plus.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://carolferreira-dev.github.io/portifolio/projetos/orienta-plus.html">
+  <link rel="alternate" hreflang="en" href="https://carolferreira-dev.github.io/portifolio/en/projects/orienta-plus.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Orienta+ · Estudo de caso">
+  <meta property="og:description" content="App que guia pessoas trans no acesso ao SUS, com mapa de serviços, jornada guiada e conteúdo offline.">
+  <meta property="og:url" content="https://carolferreira-dev.github.io/portifolio/projetos/orienta-plus.html">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <script>try { var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="../assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../">Caroline Ferreira</a>
+      <nav class="nav" aria-label="Principal">
+        <a href="../#projetos">Projetos</a>
+        <a href="../#contato">Contato</a>
+        <button class="theme-toggle" type="button" data-label-dark="Modo escuro" data-label-light="Modo claro">Modo escuro</button>
+        <a class="quiet" href="../en/projects/orienta-plus.html" hreflang="en" lang="en">English</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="case-hero wrap">
+      <a class="back" href="../#projetos">← Voltar para os projetos</a>
+      <h1>Orienta+</h1>
+      <p class="summary">Um guia para pessoas trans no SUS: do primeiro atendimento na UBS até o encaminhamento para um serviço especializado.</p>
+      <dl class="facts">
+        <div><dt>Meu papel</dt><dd>Base do app, arquitetura e segurança</dd></div>
+        <div><dt>Quando</dt><dd>abr a out de 2026</dd></div>
+        <div><dt>Equipe</dt><dd>3 pessoas · 166 de 208 commits meus</dd></div>
+        <div><dt>Resultado</dt><dd>Top 4 de 17 no BioChallenge e final no CBEB</dd></div>
+      </dl>
+    </section>
+
+    <section class="gallery band-op" aria-label="Telas do app">
+      <div class="grid">
+        <figure><img src="../assets/img/orienta/05-mapa-servicos.png" width="450" height="825" loading="lazy" alt="Mapa de serviços com os filtros Atende trans, Especializado e Hormonioterapia"><figcaption>Mapa com filtros</figcaption></figure>
+        <figure><img src="../assets/img/orienta/06-jornada.png" width="450" height="825" loading="lazy" alt="Jornada guiada em seis etapas"><figcaption>Jornada em 6 etapas</figcaption></figure>
+        <figure><img src="../assets/img/orienta/07-etapa-checklist.png" width="450" height="825" loading="lazy" alt="Checklist da etapa Fazer cartão SUS"><figcaption>Checklist de cada etapa</figcaption></figure>
+        <figure><img src="../assets/img/orienta/08-base-conhecimento.png" width="450" height="825" loading="lazy" alt="Artigos da base de conhecimento"><figcaption>Artigos sem internet</figcaption></figure>
+        <figure><img src="../assets/img/orienta/10-hormonizacao-calendario.png" width="450" height="825" loading="lazy" alt="Calendário de hormonização com doses feitas, puladas e previstas"><figcaption>Lembretes de hormonização</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="case-section wrap">
+      <div class="cols rule-strong">
+        <h2 class="label">Por que existe</h2>
+        <div class="content">
+          <p>Navegar pelo SUS já é difícil. Para pessoas trans, ainda falta informação clara sobre quais serviços acolhem, respeitam o nome social e oferecem atendimento especializado.</p>
+          <p>O Orienta+ junta tudo num só lugar: uma jornada passo a passo da UBS ao ambulatório, um mapa de serviços com filtros, avaliações da comunidade, artigos que funcionam sem internet e um calendário de hormonização com lembretes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section wrap">
+      <div class="cols rule-strong">
+        <h2 class="label">O que eu fiz</h2>
+        <ul class="content">
+          <li>A arquitetura do app em Flutter, com Riverpod para o estado, go_router para a navegação e Hive para guardar os dados no aparelho.</li>
+          <li>A segurança no Supabase com Row Level Security: o banco só entrega a cada pessoa o que é dela, e as avaliações mostram só o nome social.</li>
+          <li>O fluxo de exclusão de conta e a proteção dos dados sensíveis.</li>
+          <li>Uma auditoria de acessibilidade: fonte a 130%, alto contraste, áreas de toque maiores, rótulos para leitores de tela e modo escuro no app e no mapa.</li>
+          <li>A preparação do backend em FastAPI para o Render e a busca de endereços com OpenStreetMap e Photon.</li>
+          <li>O build de release para Android: permissões, assinatura e regras de compilação.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="case-section wrap">
+      <div class="cols rule-strong">
+        <h2 class="label">O que deu trabalho</h2>
+        <div class="content">
+          <div class="challenge"><h3>Juntar dados de fontes diferentes</h3><p>Os estabelecimentos vêm do OpenStreetMap e os serviços habilitados para o atendimento a pessoas trans vêm do CNES/DataSUS. O app cruza as duas fontes com as avaliações da comunidade.</p></div>
+          <div class="challenge"><h3>Proteger quem colabora</h3><p>Um local sugerido é marcado no mapa pelo endereço digitado, nunca pela localização de quem sugeriu, e fica como “não verificado” até a equipe revisar.</p></div>
+          <div class="challenge"><h3>Lembretes que sumiam no APK final</h3><p>No modo de desenvolvimento os lembretes funcionavam; no APK de release, não. A otimização do Android removia classes usadas pelas notificações, e foi preciso ajustar as regras de compilação.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section wrap">
+      <div class="cols rule-strong">
+        <h2 class="label">Equipe</h2>
+        <p class="content team">Emily Horrana (backend, integrações de APIs e módulo de hormonização), Bruna (design de interface, fluxos e identidade visual) e eu. Orientação de Christopher Lima.</p>
+      </div>
+    </section>
+
+    <nav class="case-next" aria-label="Outros projetos">
+      <div class="wrap"><div class="rule">
+        <a class="back" href="safevoice.html">← SafeVoice</a>
+        <a class="next" href="../#projetos">Todos os projetos →</a>
+      </div></div>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Caroline Ferreira de Souza</span>
+      <nav aria-label="Redes">
+        <a href="https://github.com/carolferreira-dev" rel="me">GitHub</a>
+        <a href="https://www.linkedin.com/in/carolineferreiradesouza" rel="me">LinkedIn</a>
+        <a href="mailto:carolferreira.dev@gmail.com">E-mail</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

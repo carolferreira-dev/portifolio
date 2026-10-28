@@ -1,5 +1,7 @@
-# Material de trabalho que não vai para o site publicado
-capturas/
-proposta/
-arquivos/
-diagramas/
+# Material de trabalho que não vai para o site publicado.
+# A barra no início prende cada regra à raiz do projeto: sem ela,
+# "diagramas/" também ignorava assets/img/diagramas/, que o site usa.
+/capturas/
+/proposta/
+/arquivos/
+/diagramas/

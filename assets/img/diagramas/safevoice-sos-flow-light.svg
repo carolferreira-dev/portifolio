@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 760" role="img" aria-labelledby="title desc" font-family="'Atkinson Hyperlegible', system-ui, 'Segoe UI', Roboto, sans-serif">
+  <title id="title">SafeVoice SOS flow</title>
+  <desc id="desc">Sequence diagram: the Flutter app records audio and gets the location, creates the alert on the FastAPI backend, which stores it in Supabase and sends the message through the WhatsApp Cloud API with retries; the app tracks the status and then uploads the audio, which reaches the contact once they reply to the alert.</desc>
+
+  <defs>
+    <marker id="ponta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path fill="#1C1B19" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <rect fill="#FFFFFF" width="980" height="760"/>
+
+  <!-- Participants -->
+  <g>
+    <rect fill="#F6F4EF" stroke="#DAD5CA" x="20" y="20" width="160" height="54" rx="10"/>
+    <text fill="#1C1B19" font-size="14" font-weight="700" x="100" y="43" text-anchor="middle">App</text>
+    <text fill="#5E5A52" font-size="11.5" x="100" y="61" text-anchor="middle">Flutter · Android</text>
+
+    <rect fill="#F6F4EF" stroke="#DAD5CA" x="250" y="20" width="160" height="54" rx="10"/>
+    <text fill="#1C1B19" font-size="14" font-weight="700" x="330" y="43" text-anchor="middle">Backend</text>
+    <text fill="#5E5A52" font-size="11.5" x="330" y="61" text-anchor="middle">FastAPI · Render</text>
+
+    <rect fill="#F6F4EF" stroke="#DAD5CA" x="460" y="20" width="160" height="54" rx="10"/>
+    <text fill="#1C1B19" font-size="14" font-weight="700" x="540" y="43" text-anchor="middle">Supabase</text>
+    <text fill="#5E5A52" font-size="11.5" x="540" y="61" text-anchor="middle">Postgres (RLS) · Storage</text>
+
+    <rect fill="#F6F4EF" stroke="#DAD5CA" x="640" y="20" width="160" height="54" rx="10"/>
+    <text fill="#1C1B19" font-size="14" font-weight="700" x="720" y="43" text-anchor="middle">WhatsApp</text>
+    <text fill="#5E5A52" font-size="11.5" x="720" y="61" text-anchor="middle">Cloud API (Meta)</text>
+
+    <rect fill="#F6F4EF" stroke="#DAD5CA" x="820" y="20" width="140" height="54" rx="10"/>
+    <text fill="#1C1B19" font-size="14" font-weight="700" x="890" y="43" text-anchor="middle">Contact</text>
+    <text fill="#5E5A52" font-size="11.5" x="890" y="61" text-anchor="middle">support network</text>
+  </g>
+
+  <!-- Lifelines -->
+  <line stroke="#CFC9BD" stroke-dasharray="4 5" x1="100" y1="74" x2="100" y2="740"/>
+  <line stroke="#CFC9BD" stroke-dasharray="4 5" x1="330" y1="74" x2="330" y2="740"/>
+  <line stroke="#CFC9BD" stroke-dasharray="4 5" x1="540" y1="74" x2="540" y2="740"/>
+  <line stroke="#CFC9BD" stroke-dasharray="4 5" x1="720" y1="74" x2="720" y2="740"/>
+  <line stroke="#CFC9BD" stroke-dasharray="4 5" x1="890" y1="74" x2="890" y2="740"/>
+
+  <!-- Phase 1: trigger -->
+  <text fill="#1F6B4F" font-size="11" font-weight="700" letter-spacing="0.6" x="20" y="104">TRIGGER</text>
+  <line stroke="#DAD5CA" x1="120" y1="100" x2="960" y2="100"/>
+
+  <rect fill="#E9E1F3" stroke="#CFC3E0" x="20" y="116" width="290" height="46" rx="8"/>
+  <circle fill="#1F6B4F" cx="38" cy="139" r="10"/><text fill="#FFFFFF" font-size="11" font-weight="700" x="38" y="143" text-anchor="middle">1</text>
+  <text fill="#2B2340" font-size="12.5" x="56" y="135">4 taps on the bell (with confirmation) or</text>
+  <text fill="#2B2340" font-size="12.5" x="56" y="153">3 presses on volume/power, even when locked</text>
+
+  <rect fill="#E9E1F3" stroke="#CFC3E0" x="20" y="172" width="290" height="46" rx="8"/>
+  <circle fill="#1F6B4F" cx="38" cy="195" r="10"/><text fill="#FFFFFF" font-size="11" font-weight="700" x="38" y="199" text-anchor="middle">2</text>
+  <text fill="#2B2340" font-size="12.5" x="56" y="191">In parallel: records 10 s of audio</text>
+  <text fill="#2B2340" font-size="12.5" x="56" y="209">and gets GPS (up to 15 s, with fallback)</text>
+
+  <!-- Phase 2: alert -->
+  <text fill="#1F6B4F" font-size="11" font-weight="700" letter-spacing="0.6" x="20" y="252">ALERT</text>
+  <line stroke="#DAD5CA" x1="80" y1="248" x2="960" y2="248"/>
+
+  <circle fill="#1F6B4F" cx="114" cy="290" r="10"/><text fill="#FFFFFF" font-size="11" font-weight="700" x="114" y="294" text-anchor="middle">3</text>
+  <text fill="#1C1B19" font-size="12.5" x="222" y="276" text-anchor="middle">POST /api/sos</text>
+  <path stroke="#1C1B19" stroke-width="1.6" fill="none" d="M128 290 H326" marker-end="url(#ponta)"/>
+  <text fill="#5E5A52" font-size="11.5" x="222" y="308" text-anchor="middle">idempotent id · up to 3 resends</text>
+
+  <rect fill="#E9E1F3" stroke="#CFC3E0" x="236" y="322" width="218" height="46" rx="8"/>
+  <circle fill="#1F6B4F" cx="254" cy="345" r="10"/><text fill="#FFFFFF" font-size="11" font-weight="700" x="254" y="349" text-anchor="middle">4</text>
+  <text fill="#2B2340" font-size="12.5" x="270" y="341">auth, limit of</text>
+  <text fill="#2B2340" font-size="12.5" x="270" y="359">10 SOS/5 min, 60 s cooldown</text>
+
+  <circle fill="#1F6B4F" cx="344" cy="398" r="10"/><text fill="#FFFFFF" font-size="11" font-weight="700" x="344" y="402" text-anchor="middle">5</text>
+  <text fill="#1C1B19" font-size="12.5" x="446" y="384" text-anchor="middle">reads contacts (RLS)</text>
+  <path stroke="#1C1B19" stroke-width="1.6" fill="none" d="M358 398 H536" marker-end="url(#ponta)"/>
+  <text fill="#5E5A52" font-size="11.5" x="446" y="416" text-anchor="middle">creates alert + 1 delivery per contact</text>
+
+  <circle fill="#1F6B4F" cx="344" cy="456" r="10"/><text fill="#FFFFFF" font-size="11" font-weight="700" x="344" y="460" text-anchor="middle">6</text>
+  <text fill="#1C1B19" font-size="12.5" x="532" y="442" text-anchor="middle">alert template, primary contact first</text>
+  <path stroke="#1C1B19" stroke-width="1.6" fill="none" d="M358 456 H716" marker-end="url(#ponta)"/>
+  <text fill="#5E5A52" font-size="11.5" x="532" y="474" text-anchor="middle">queue in the database · up to 5 attempts (5 → 15 → 30 → 60 s)</text>
+
+  <path stroke="#1C1B19" stroke-width="1.6" fill="none" d="M724 498 H886" marker-end="url(#ponta)"/>
+  <text fill="#1C1B19" font-size="12.5" x="805" y="490" text-anchor="middle">name, time, map</text>
+
+  <circle fill="#1F6B4F" cx="316" cy="536" r="10"/><text fill="#FFFFFF" font-size="11" font-weight="700" x="316" y="540" text-anchor="middle">7</text>
+  <path stroke="#1C1B19" stroke-width="1.6" fill="none" stroke-dasharray="6 4" d="M302 536 H104" marker-end="url(#ponta)"/>
+  <text fill="#1C1B19" font-size="12.5" x="203" y="526" text-anchor="middle">status “sent”</text>
+  <text fill="#5E5A52" font-size="11.5" x="203" y="554" text-anchor="middle">polling every 2 s, for up to 60 s</text>
+  <text fill="#5E5A52" font-size="11.5" x="203" y="570" text-anchor="middle">→ “Help requested!”</text>
+
+  <!-- Phase 3: evidence -->
+  <text fill="#1F6B4F" font-size="11" font-weight="700" letter-spacing="0.6" x="20" y="604">EVIDENCE</text>
+  <line stroke="#DAD5CA" x1="98" y1="600" x2="960" y2="600"/>
+
+  <circle fill="#1F6B4F" cx="114" cy="636" r="10"/><text fill="#FFFFFF" font-size="11" font-weight="700" x="114" y="640" text-anchor="middle">8</text>
+  <path stroke="#1C1B19" stroke-width="1.6" fill="none" d="M128 636 H326" marker-end="url(#ponta)"/>
+  <text fill="#1C1B19" font-size="12.5" x="222" y="626" text-anchor="middle">POST audio</text>
+  <path stroke="#1C1B19" stroke-width="1.6" fill="none" d="M334 636 H536" marker-end="url(#ponta)"/>
+  <text fill="#1C1B19" font-size="12.5" x="435" y="626" text-anchor="middle">ogg/opus → private bucket</text>
+
+  <circle fill="#1F6B4F" cx="876" cy="686" r="10"/><text fill="#FFFFFF" font-size="11" font-weight="700" x="876" y="690" text-anchor="middle">9</text>
+  <path stroke="#1C1B19" stroke-width="1.6" fill="none" stroke-dasharray="6 4" d="M862 686 H334" marker-end="url(#ponta)"/>
+  <text fill="#1C1B19" font-size="12.5" x="600" y="676" text-anchor="middle">taps “I got the alert” → signed webhook</text>
+
+  <path stroke="#1C1B19" stroke-width="1.6" fill="none" d="M334 722 H886" marker-end="url(#ponta)"/>
+  <text fill="#1C1B19" font-size="12.5" x="610" y="714" text-anchor="middle">audio released (24 h window open)</text>
+</svg>
